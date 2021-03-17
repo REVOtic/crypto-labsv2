@@ -2,7 +2,7 @@
 > `npm i @revoalgotechnique/common`
 
 ### Examples
-> `const revo = require('@revoalgotechnique/common')`
+> `const revo = require('@revoalgotechnique/common')` </br>
 > `revo.aes()`
 
 ##    Summary of Implementation of various Cryptographic Algorithms

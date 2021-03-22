@@ -1,19 +1,25 @@
-const localaes = require('./src/aes')
-const localcurve25519 = require('./src/curve25519')
-const localEcdsa = require('./src/ECDSA')
-const localEddsa = require('./src/eddsa1')
-const localsecp256k1 = require('./src/secp256k1')
+const localAes = require('./src/aes')
+const localcurve = require('./src/curve')
+const localEcdsa = require('./src/ecdsa')
+const localEddsa = require('./src/eddsa')
+const localSecp = require('./src/secp')
 const localRsa = require('./src/rsa')
-const localEd25519 = require('./src/Ed25519')
-const { getUserInput } = require('./src/utils/getUserInput')
-const revotechEncryptionTechnique = {
-    aes: localaes,
-    curve: localcurve25519,
+const localEd = require('./src/ed')
+
+
+
+console.log("Crypto Utils....")
+
+
+const cryptoUtils = {
+    aes: localAes,
+    curve: localcurve,
     ecdsa: localEcdsa,
     eddsa: localEddsa,
-    secp256k1: localsecp256k1,
+    secp: localSecp,
     rsa: localRsa,
-    ed25519: localEd25519
-
+    ed: localEd
 }
-module.exports = revotechEncryptionTechnique;
+
+module.exports = cryptoUtils;
+

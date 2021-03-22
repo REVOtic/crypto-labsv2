@@ -1,13 +1,56 @@
-# How to use
+# CryptoHelper
+
+It is written in pure JS language, where various cryptographic algorithms listed below are implemented.
+
+* [AES256](#AES256 (revo.aes()))
+* [RSA](#RSA (revo.rsa()))
+* [ECDSA](#ECDSA (revo.ecdsa()))
+* [secp256k1](#secp256k1 (revo.secp256k1()))
+* [EDDSA](#EdDSA (revo.eddsa())) 
+* [ED25519](#Ed25519 (revo.ed25519()))
+* [curve25519](#Curve25519 (revo.curve()))
+
+## How to use
+
+### Installation
+##### for npm
 > `npm i @revoalgotechnique/common`
+
 
 ### Examples
 > `const revo = require('@revoalgotechnique/common')` </br>
 > `revo.aes()`
 
+#### for secp256k1
+```javascript
+const secp  = require("../secp");
+const SECRET = 'my-secret';
+
+async function secpExample  ()  {
+    const message = "Hello there";
+    const {privateKey, publicKey} = await secp.generatePublicPrivateKey(SECRET)
+    console.log(privateKey, publicKey)
+    const hashedMessage = await secp.hashMessage(message);
+    const signMessage = await secp.signSignature(hashedMessage, privateKey);
+    const state = await secp.verifySignature(signMessage, hashedMessage, publicKey);
+}
+
+secpExample()
+
+
+```
+
+
+
 ##    Summary of Implementation of various Cryptographic Algorithms
 
-## AES256 (revo.aes())
+### From SRC>Examples folder
+
+Refer to the folder to understand it in a simple steps.
+
+### From SRC files
+
+#### AES256 (revo.aes())
 Also known as Advanced Encryption Standard that has 256 bits of symmetric key that use same key for  both encryption as well as decryption. The bit size 256 is a form of AES that has 14 rounds of encryption that provides the highest level of security since it is implemented for sensitive data and is used for data in transit or network connection. Used in file encryption and wireless security.
 In the implementation, there is shared key between alice, bob and may. Since the shared key is computed between alice and bob, may will not be able to read the message.
 
@@ -50,8 +93,16 @@ In the implementation, since the keys are generated and is shared using derived 
 > `npm i noble-secp256k1`</br>
 > `npm i eccrypto`</br>
 > `npm i sha256` </br>
+
+### Refernces
+
+* https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/
+* https://www.freecodecamp.org/news/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78/
+* https://github.com/cryptocoinjs/secp256k1-node
+
 ### Note
 - [`RSA is not as efficient in practice as ECDSA for signing purpose while validation of signature is faster with RSA.`]
 - [`EdDSA is gaining more transacton nowadays as it is easy to implement and is faster than ECDSA. It also has plenty of secure open-source code available.`]
 - [`sep256k1, used by bitcoin is gaining in popularity due to its several nice properties. It gives efficient computation and is 30% faster than the other curves.`]
-      
+ 
+  

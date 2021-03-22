@@ -24,7 +24,7 @@ It is written in pure JS language, where various cryptographic algorithms listed
 #### for secp256k1
 ```javascript
 const secp  = require("../secp");
-const SECRET = 'my-secret';
+const SECRET  = require("./constant")
 
 async function secpExample  ()  {
     const message = "Hello there";
